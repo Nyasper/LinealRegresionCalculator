@@ -30,5 +30,6 @@ class Regresion:
         return B
 
     def recta(self):
-        print("La recta es:")
-        print("y = {}x + {}".format(self.m,self.b))
+        print("la ecuacion de recta de la forma y = mx + b es:", end="\n\n")
+        print("\ty = {}x + {}".format(self.m,self.b), end="\n\n")
+        print("\tm = {}\tb = {}".format(self.m,self.b))
