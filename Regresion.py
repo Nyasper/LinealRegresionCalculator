@@ -9,15 +9,21 @@ class Regresion:
         self.m = 0              #Pendiente
         self.b = 0              #Ordenada al origen
 
-    def grafica(self, color='green'):
+    def grafica(self, x_name="X", y_name="Y"):
+        plt.xlabel(x_name)
+        plt.ylabel(y_name)
+        plt.grid()
+
         x1 = self.x[0]
         y1 = (self.m * self.x[0]) + self.b
 
         x2 = self.x[-1]
         y2 = (self.m * self.x[-1]) + self.b
         
-        plt.scatter(self.x, self.y, alpha=0.7, c = color)
-        plt.plot([x1,x2], [y1,y2], color="red")
+        plt.plot(self.x, self.y, 'o', label="Datos")
+        plt.plot([x1,x2], [y1,y2], color="red", label="Ajuste")
+        plt.legend()
+
         plt.show()
 
     def regresion(self):
