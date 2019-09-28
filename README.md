@@ -1,1 +1,1 @@
-# LinealRegresionCalculator
+# Lineal Regresion Calculator
