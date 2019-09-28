@@ -21,7 +21,7 @@ class Regresion:
         y2 = (self.m * self.x[-1]) + self.b
         
         plt.plot(self.x, self.y, 'o', label="Datos")
-        plt.plot([x1,x2], [y1,y2], color="red", label="Ajuste")
+        plt.plot(self.x, (self.m * self.x + self.b), color="red", label="Ajuste")
         plt.legend()
 
         plt.show()
