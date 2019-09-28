@@ -13,15 +13,11 @@ class Regresion:
         plt.xlabel(x_name)
         plt.ylabel(y_name)
         plt.grid()
-
-        x1 = self.x[0]
-        y1 = (self.m * self.x[0]) + self.b
-
-        x2 = self.x[-1]
-        y2 = (self.m * self.x[-1]) + self.b
         
+        recta = self.m * self.x + self.b
+
         plt.plot(self.x, self.y, 'o', label="Datos")
-        plt.plot(self.x, (self.m * self.x + self.b), color="red", label="Ajuste")
+        plt.plot(self.x,recta , color="red", label="Ajuste")
         plt.legend()
 
         plt.show()
