@@ -1,1 +1,1 @@
-# Lineal Regresion Calculator
+# Linear Regression Calulator
