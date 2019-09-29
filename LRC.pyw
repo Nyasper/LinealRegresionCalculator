@@ -11,6 +11,14 @@ import numpy as np
 from LR import LR
 
 def transformArray():
+    #functions Error
+    def xyDiferent_Error():
+        tk.messagebox.showwarning(title="Number of items error", message="""The number of elements of x and y cannot be different!
+The number of elements must be greater than 1!""")
+
+    def character_Error():
+        tk.messagebox.showwarning(title="Type Error", message="You can't use characters")
+
     xArray = np.array([])
     yArray = np.array([])
 
@@ -20,23 +28,27 @@ def transformArray():
     x1 = x1.split(',')
     y1 = y1.split(',')
     
-    if len(x1) == len(y1):
+    if len(x1) == len(y1) and len(x1) != 1:
         print("Transform x{} to numpy array".format(x))
-        for i in x1:
-            xArray = np.append(xArray ,float(i))
+        try:
+            for i in x1:
+                xArray = np.append(xArray ,float(i))
 
-        print(xArray, type(xArray))
+            print(xArray, type(xArray))
 
-        print("Transform y{} to numpy array".format(y))
-        for i in y1:
-            yArray = np.append(yArray ,float(i))
+            print("Transform y{} to numpy array".format(y))
+            for i in y1:
+                yArray = np.append(yArray ,float(i))
         
-        print(yArray, type(yArray))
+            print(yArray, type(yArray))
 
-        #Graph
-        LRCgraph(xArray, yArray)
+            #Graph
+            LRCgraph(xArray, yArray)
+        except ValueError:
+            character_Error()
+
     else:
-        pass
+        xyDiferent_Error()
 
 """GRAPH seccion code"""
 def LRCgraph(xArray, yArray):
@@ -114,7 +126,10 @@ def quit():
 def howToUse():
     tk.messagebox.showinfo(message="""Enter the data of x and y using a "," for each item
 Example:
-1,2,3.2,4,5.7""", title="How to use")
+1,2,3.2,4,5.7
+Notes:
+    -The number of elements of x and y cannot be different
+    -The number of elements must be greater than 1""", title="How to use")
 
 def codeInfo():
     import webbrowser
