@@ -8,47 +8,54 @@ from matplotlib.figure import Figure
 
 import numpy as np
 
-from Regresion import Regresion
+from LR import LR
 
 def transformArray():
-    global x,y
-
     xArray = np.array([])
     yArray = np.array([])
 
-    x = x.get()
-    y = y.get()
+    x1 = x.get()
+    y1 = y.get()
 
-    x = x.split(',')
-    y = y.split(',')
+    x1 = x1.split(',')
+    y1 = y1.split(',')
     
     print("Transform x{} to numpy array".format(x))
-    for i in x:
+    for i in x1:
         xArray = np.append(xArray ,int(i))
 
     print(xArray, type(xArray))
 
     print("Transform y{} to numpy array".format(y))
-    for i in y:
+    for i in y1:
         yArray = np.append(yArray ,int(i))
     
     print(yArray, type(yArray))
 
+    #Graph
+    LRCgraph(xArray, yArray)
+
 """GRAPH seccion code"""
-def rlgraph():
+def LRCgraph(xArray, yArray):
+    reg = LR(xArray, yArray)    #New object Linear Regression
+    reg.get_m_b()               #get m, b
+
+    line = reg.m * reg.x + reg.b
+    print(reg.b)
+
     #Label del titulo "Grafica"
     textGrafica = tk.Label(frame, text="GRAPH", font=("Helvetica", 16))
     textGrafica.grid(row=5, column=1, padx=5)
 
     graph = Figure(figsize=(5, 4), dpi=100)
 
-    arrayX, arrayY = 0, 0
-    Recta = 0
-
     graph.add_subplot().grid()
 
-    graph.add_subplot().plot(arrayX, arrayY, 'o', label="Datos")
-    graph.add_subplot().plot(Recta , color="red", label="Ajuste")
+    "plot Data"
+    graph.add_subplot().plot(xArray, yArray, 'o', label="Data")
+    "plot Linear Adjustment"
+    graph.add_subplot().plot(xArray, line, color="red", label="Linear Adjustment")
+
     graph.add_subplot().legend()
 
     canvas = FigureCanvasTkAgg(graph, master=frame)  # A tk.DrawingArea.
@@ -60,8 +67,8 @@ def rlgraph():
 window = tk.Tk()
 window.resizable(False, False)
 
-window.title("RLC")                        #Window name
-window.iconbitmap('RLC.ico')               #icon
+window.title("LRC")                        #Window name
+window.iconbitmap('LRC.ico')               #icon
 
 #Frame 1
 frame = tk.Frame(window, width=500, height=600)

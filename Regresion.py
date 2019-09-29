@@ -9,6 +9,9 @@ class Regresion:
         self.m = 0              #Pendiente
         self.b = 0              #Ordenada al origen
 
+    
+
+    """Funciones de libreria"""
     def grafica(self, x_name="X", y_name="Y"):
         plt.xlabel(x_name)
         plt.ylabel(y_name)
