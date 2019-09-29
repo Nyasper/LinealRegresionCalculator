@@ -115,7 +115,7 @@ window = tk.Tk()
 window.resizable(False, False)
 
 window.title("LRC")                        #Window name
-window.iconbitmap('LRC.ico')               #icon
+window.iconbitmap('images/LRC.ico')               #icon
 
 #Create menu
 #Functions menu
@@ -155,7 +155,7 @@ frame = tk.Frame(window, width=500, height=600)
 frame.pack()
 
 #Label de titulo
-title = tk.PhotoImage(file='title.png')
+title = tk.PhotoImage(file='images/title.png')
 tk.Label(frame, image=title).grid(row=0, column=0, columnspan=3, padx=5, pady=7)
 
 """DATA Seccion code"""
